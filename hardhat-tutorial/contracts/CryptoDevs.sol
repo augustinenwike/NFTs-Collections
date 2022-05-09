@@ -13,7 +13,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
   uint256 public tokenIds;
   IWhitelist whitelist;
   bool public presaleStarted;
-  uint256 public presaleEnded
+  uint256 public ;
   modifier onlyWhenNotPaused {
     require(!_paused, "Contract currently paused");
     _;
