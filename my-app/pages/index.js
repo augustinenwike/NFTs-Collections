@@ -154,7 +154,6 @@ export default function Home() {
         disableInjectedProvider: false,
       });
       connectWallet();
-      getOwner();
       const _presaleStarted = checkIfPresaleStarted();
       if (_presaleStarted) {
         checkIfPresaleEnded();
@@ -169,12 +168,14 @@ export default function Home() {
           }
         }
       }, 5 * 1000);
+      setInterval(async function () {
+        await getTokenIdsMinted();
+      }, 5 * 1000);
     }
   },[walletConnected]);
 
 
   const renderButton = () => {
-    // If wallet is not connected, return a button which allows them to connect their wllet
     if (!walletConnected) {
       return (
         <button onClick={connectWallet} className={styles.button}>
@@ -182,13 +183,9 @@ export default function Home() {
         </button>
       );
     }
-
-    // If we are currently waiting for something, return a loading button
     if (loading) {
       return <button className={styles.button}>Loading...</button>;
     }
-
-    // If connected user is the owner, and presale hasnt started yet, allow them to start the presale
     if (isOwner && !presaleStarted) {
       return (
         <button className={styles.button} onClick={startPresale}>
@@ -196,9 +193,7 @@ export default function Home() {
         </button>
       );
     }
-
-    // If connected user is not the owner but presale hasn't started yet, tell them that
-    if (!presaleStarted) {
+    if (!isOwner && !presaleStarted) {
       return (
         <div>
           <div className={styles.description}>Presale hasnt started!</div>
