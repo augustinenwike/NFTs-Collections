@@ -19,7 +19,7 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       const whitelistContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
       const tx = await whitelistContract.presaleMint({
-        value: utils.parseEther(0.01),
+        value: utils.parseEther("0.01"),
       });
       setLoading(true);
       await tx.wait();
@@ -35,7 +35,7 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       const whitelistContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
       const tx = await whitelistContract.mint({
-        value: utils.parseEther(0.01),
+        value: utils.parseEther("0.01"),
       });
       setLoading(true);
       await tx.wait();
@@ -55,11 +55,11 @@ export default function Home() {
     }
   };
 
-  const startPresale = async () => {
+  const StartPresale = async () => {
     try {
       const signer = await getProviderOrSigner(true);
       const whitelistContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
-      const tx = await whitelistContract.startPresale();
+      const tx = await whitelistContract.StartPresale();
       setLoading(true);
       await tx.wait();
       setLoading(false);
@@ -188,7 +188,7 @@ export default function Home() {
     }
     if (isOwner && !presaleStarted) {
       return (
-        <button className={styles.button} onClick={startPresale}>
+        <button onClick={StartPresale} className={styles.button}>
           Start Presale!
         </button>
       );
