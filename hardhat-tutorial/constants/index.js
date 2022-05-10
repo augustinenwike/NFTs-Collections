@@ -1,4 +1,6 @@
 const WHITELIST_CONTRACT_ADDRESS = "0x12bF1b878077bA5cCFdEED03926798E102b40Ee6";
-const METADATA_URL = "https://nft-collection-sneh1999.vercel.app/api/";
+const METADATA_URL = "nft-s-collections.vercel.app/api/";
 
 module.exports = { WHITELIST_CONTRACT_ADDRESS, METADATA_URL };
+
+// Crypto Devs Contract Address: 0xcefa03D65028601B06eEFA2Bc374F9182C22D172
