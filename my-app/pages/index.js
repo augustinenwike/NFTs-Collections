@@ -154,6 +154,7 @@ export default function Home() {
         disableInjectedProvider: false,
       });
       connectWallet();
+      getOwner();
       const _presaleStarted = checkIfPresaleStarted();
       if (_presaleStarted) {
         checkIfPresaleEnded();
